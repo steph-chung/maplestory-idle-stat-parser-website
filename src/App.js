@@ -196,10 +196,25 @@ function App() {
           </div>
         )}
 
-        {result && (
+        {result && result.summary?.merged_stats && (
           <div className="result-box">
-            <h3>✅ Results:</h3>
-            <pre>{JSON.stringify(result, null, 2)}</pre>
+            <h3>✅ Merged Stats</h3>
+            <table className="stats-table">
+              <thead>
+                <tr>
+                  <th>Stat</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(result.summary.merged_stats).map(([stat, value]) => (
+                  <tr key={stat}>
+                    <td>{stat}</td>
+                    <td>{value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         )}
       </div>

@@ -211,3 +211,48 @@ h1 {
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.stats-table th,
+.stats-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stats-table th {
+  background: rgba(72, 187, 120, 0.2);
+  color: #9ae6b4;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.stats-table td {
+  color: #e2e8f0;
+}
+
+.stats-table td:first-child {
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+.stats-table td:last-child {
+  color: #9ae6b4;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.stats-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.stats-table tbody tr:last-child td {
+  border-bottom: none;
+}

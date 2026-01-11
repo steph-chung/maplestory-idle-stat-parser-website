@@ -44,15 +44,20 @@ function App() {
         const response = await fetch(`${API_BASE_URL}/jobs/${id}/summary`);
         const data = await response.json();
 
-        if (response.ok && data && data.status !== 'pending' && data.status !== 'processing') {
+        // Check if job is still pending or processing
+        if (data.state === 'PENDING' || data.state === 'PROCESSING') {
+          // Update status with progress if available
+          setStatus(`polling - ${data.state}`);
+          attempts++;
+          await new Promise(resolve => setTimeout(resolve, pollInterval));
+          continue;
+        }
+
+        // Job is complete (or failed)
+        if (response.ok) {
           setResult(data);
           setStatus('complete');
           return;
-        }
-
-        // Update status with progress if available
-        if (data.status) {
-          setStatus(`polling - ${data.status}`);
         }
 
         attempts++;
